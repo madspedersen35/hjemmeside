@@ -15,7 +15,7 @@ app.use(express.static("./hjemmeside/Frontend"));
 app.use(express.json());
 //det gør at når vi sender noget over nettet så kommer det som json objekt og ikke som en string
 
-app.use("/bruger", brugerKontrol);
+app.use("/brugere", brugerKontrol);
 // Nu har vi så lavet et endpoint så tager udgangspunkt i min bruger kontrol fil 
 
 app.listen(PORT, console.log(`Serveren lytter til ${PORT}`));

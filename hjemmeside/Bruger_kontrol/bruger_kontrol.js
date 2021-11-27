@@ -14,7 +14,7 @@ router.get("/", (req,res) => {
 });
 
 router.post("/opret", (req, res) => {
-    const bruger = new brugerModel(req.body.email, req.body.password);
+    const bruger = new brugerModel(req.body.email, req.body.Adgangskode);
 
     db.saveUser(bruger);
 
@@ -24,13 +24,13 @@ router.post("/opret", (req, res) => {
 
   router.post("/login", (req,res) => {
 
-    const bruger = new brugerModel(req.body.email, req.body.password);
+    const bruger = new brugerModel(req.body.email, req.body.Adgangskode);
 
     const found = db.findUser(bruger);
 
     if (found) {
 
-      if(bruger.password == found.password){
+      if(bruger.Adgangskode == found.Adgangskode){
 
         res.status(200).send(true);
 
@@ -47,7 +47,7 @@ router.post("/opret", (req, res) => {
 
 router.post("/slet", (req, res) => {
 
-  const bruger = new brugerModel(req.body.email, req.body.password);
+  const bruger = new brugerModel(req.body.email, req.body.Adgangskode);
   
   db.deleteUser(bruger);
 

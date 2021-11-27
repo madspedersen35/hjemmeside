@@ -1,9 +1,5 @@
-const { json } = require("express");
-const fs = require("fs");// Her benyttes fs til at lave et lokalt biblotek der sørger for vi kan gemme tekst/fil 
-const User = require("../model/Brugere");
 
-// vi skal bruge vores brugere fra vores brugere.json vi definere derfor en path til hvor
-// computeren kan finde filen
+var fs = require("fs");// Her benyttes fs til at lave et lokalt biblotek der sørger for vi kan gemme tekst/fil 
 
 const ABSOLUTE_PATH = __dirname + "/../../Database";
 const BRUGER_FILE = "/brugere.json";

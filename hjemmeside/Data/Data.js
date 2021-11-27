@@ -1,35 +1,38 @@
+var fs = require("fs");
 
-var fs = require("fs");// Her benyttes fs til at lave et lokalt biblotek der sørger for vi kan gemme tekst/fil 
-
-const ABSOLUTE_PATH = __dirname + "/../../Database";
-const BRUGER_FILE = "/brugere.json";
-
+const ABSOLUTE_PATH = __dirname + "/../../database";
+const BRUGER_FIL = "/brugere.json";
 
 class DB {
-    constructor(){
-        this.brugere = this.openFile(BRUGER_FILE);//vi laver en variabel af vores json fil, hvilket gør vi kan gemme vores liste med brugere 
-    }
-    
-    saveFile(filNavn, contentString){
-        fs.writeFileSync(ABSOLUTE_PATH + filNavn, contentString);//Så vi kan gemme vores bruger i vores database 
-    }
-// vores funktion er synkron, det vil sige vi venter til den er færdig
-    openFile(filNavn){
-        const file = fs.readFileSync(ABSOLUTE_PATH + filNavn);
-        return JSON.parse(file); // Dette gøres så filen kommer som json og ikke som string
+  constructor() {
+    this.brugere = this.openFile(BRUGER_FIL);
+  }
+ 
+  saveFile(fileName, contentString) {
+    fs.writeFileSync(ABSOLUTE_PATH + fileName, contentString);
+  }
 
-    }
-    saveUser(bruger){
-        this.brugere.push(bruger);
-        this.saveFile(BRUGER_FILE, JSON.stringify(this.brugere));
-    }
-    deleteUser(bruger) {
-        this.brugere = this.brugere.filter((x) => x.email != bruger.email);
-        this.saveFile(BRUGER_FILE, JSON.stringify(this.brugere));
-    }
-    findUser(bruger) {
-        return this.brugere.find((x) => bruger.email == x.email);
-    }
+
+  openFile(fileName) {
+    const file = fs.readFileSync(ABSOLUTE_PATH + fileName);
+    return JSON.parse(file);
+  }
+
+
+  saveUser(bruger) {
+    this.brugere.push(bruger);
+    this.saveFile(BRUGER_FIL, JSON.stringify(this.brugere));
+  }
+
+  deleteUser(bruger) {
+    this.brugere = this.brugere.filter((x) => x.email != bruger.email);
+    this.saveFile(BRUGER_FIL, JSON.stringify(this.brugere));
+  }
+
+  findUser(bruger) {
+    return this.brugere.find((x) => bruger.email == x.email);
+  }
 }
 
-module.exports = new DB(); //singleton find på nettet og skriv 
+// Det her er en singleton -- laaangt over pensum, men et ret fedt term at fyre af
+module.exports = new DB();

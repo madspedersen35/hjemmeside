@@ -6,8 +6,10 @@ const brugerModel = require("../model/Brugere");
 
 const db = require("./../Data/Data"); 
 
+
+
 router.post("/opret", (req, res) => {
-    const bruger = new brugerModel(req.body.email, req.body.Adgangskode);
+    const bruger = new brugerModel(req.body.email, req.body.adgangskode);
 
     db.saveUser(bruger);
 
@@ -17,13 +19,13 @@ router.post("/opret", (req, res) => {
 
   router.post("/login", (req,res) => {
 
-    const bruger = new brugerModel(req.body.email, req.body.Adgangskode);
+    const bruger = new brugerModel(req.body.email, req.body.adgangskode);
 
     const found = db.findUser(bruger);
 
     if (found) {
 
-      if(bruger.Adgangskode == found.Adgangskode){
+      if(bruger.adgangskode == found.adgangskode){
 
         res.status(200).send(true);
 
@@ -40,12 +42,10 @@ router.post("/opret", (req, res) => {
 
 router.post("/slet", (req, res) => {
 
-  const bruger = new brugerModel(req.body.email, req.body.Adgangskode);
+  const bruger = new brugerModel(req.body.email, req.body.adgangskode);
   
   db.deleteUser(bruger);
 
   res.status(200).send(true);
 });
-
-
 module.exports = router;

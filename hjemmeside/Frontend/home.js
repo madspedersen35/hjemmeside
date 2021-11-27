@@ -1,4 +1,3 @@
-document.addEventListener("DOMContentLoaded", (event) => {
     const bruger = localStorage.getItem("bruger");
     if (!bruger) {
       location.href = "/logind.html";

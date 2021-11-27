@@ -6,13 +6,6 @@ const brugerModel = require("../model/Brugere");
 
 const db = require("./../Data/Data"); 
 
-
-router.get("/", (req,res) => {
-  
-  res.status(200).send("hej");
-
-});
-
 router.post("/opret", (req, res) => {
     const bruger = new brugerModel(req.body.email, req.body.Adgangskode);
 
@@ -53,4 +46,6 @@ router.post("/slet", (req, res) => {
 
   res.status(200).send(true);
 });
+
+
 module.exports = router;

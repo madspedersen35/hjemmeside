@@ -1,22 +1,16 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-    const bruger = localStorage.getItem("Bruger");
-    if (bruger) {
-      location.href = "/";
+    const bruger = localStorage.getItem("bruger");
+    if (!bruger) {
+      location.href = "/logind.html";
     }
   
-    document.getElementById("form").addEventListener("submit", (event) => {
+    document.getElementById("delete").addEventListener("submit", (event) => {
       event.preventDefault();
   
-      const email = document.getElementById("email").value;
-      const Adgangskode = document.getElementById("Adgangskode").value;
+      const bruger = JSON.parse(localStorage.getItem("bruger"));
   
-      const bruger = {
-        email: email,
-        Adgangskode: Adgangskode,
-      };
-  
-      fetch("http://localhost:2021/brugere/home", {
-        method: "POST",
+      fetch("http://localhost:2021/brugere/delete", {
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
@@ -25,15 +19,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
         .then((response) => response.json())
         .then((response) => {
           if (response) {
-         
-            localStorage.setItem("bruger", JSON.stringify(bruger));
-            location.href = "/home";
-          } else {
-            window.alert("De indtastede oplysninger var forkerte, prøv igen");
+            localStorage.removeItem("bruger");
+            location.href = "/logind.html";
           }
         })
         .catch(() => {
-          window.alert("Der opstod en fejl");
+          window.alert("Der opstod en fejl, prøv igen");
         });
     });
   });

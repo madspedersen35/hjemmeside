@@ -37,10 +37,9 @@ router.post("/opret", (req, res) => {
 
       res.status(404).send(false)
     }
-});// her hvordan man logger ind og en if analyse ift hvad der sker hvis man ikke indtaster det rigtige 
+});
 
-
-router.post("/slet", (req, res) => {
+router.delete("/slet", (req, res) => {
 
   const bruger = new brugerModel(req.body.email, req.body.adgangskode);
   

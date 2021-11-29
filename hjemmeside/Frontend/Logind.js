@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", (event) => {
+  const bruger = localStorage.getItem("bruger");
+  if (bruger){
+    location.href ="/home.html"
+  }
   document.getElementById("form").addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -21,7 +25,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       .then((response) => {
         if (response) {
 
-
+          localStorage.setItem("bruger", JSON.stringify(bruger));
           location.href = "/home.html";
         } else {
           window.alert("De indtastede oplysninger er forkerte, prøv igen");

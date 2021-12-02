@@ -4,7 +4,7 @@ const router = express.Router();
 
 const brugerModel = require("../model/Brugere");
 
-const db = require("./../Data/Data"); 
+const db = require("../Data/Data"); 
 
 
 

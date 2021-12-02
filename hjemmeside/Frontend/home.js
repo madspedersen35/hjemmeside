@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         const bruger = JSON.parse(localStorage.getItem("bruger"));
         
         
-        fetch("http://localhost:4444/brugere/slet", {
+        fetch("http://localhost:5555/brugere/slet", {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -29,6 +29,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
       });
   });
 });
+
+//log ud 
+
 
         
     

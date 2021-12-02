@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       adgangskode: adgangskode,
     };
 
-    fetch("http://localhost:4444/brugere/opret", {
+    fetch("http://localhost:5555/brugere/opret", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vareoversigt</title>
+</head>
+<h1>Vareoversigt</h1>
+<body>
+    <form id="submitForm">
+        Titel<input type="input" name="titel"><br/>
+        Pris<input type= "number" name="pris"><br/>
+        Kategori<select name="kategori">
+            <option value= "kategori"> Elektronik </option>
+            <option value= "kategori"> møbler </option>
+        </select>
+        <br/>
+        Billede<input type= "file" name="thumbnail">
+        Opret vare<button type="Submit"> Opret</button>  
+    </form>
+    Updater vareliste<button id="refresh">Updater</button>
+    <table id="VareListe">
+
+
+    </table>
+    <script src="index.js" async defer></script>
+</body> 
+</html>

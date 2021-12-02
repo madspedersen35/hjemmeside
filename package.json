@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/madspedersen35/hjemmeside#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "data": "^0.6.1",
+    "express": "^4.17.1",
+    "express-form-data": "^2.0.17",
+    "form": "^0.2.4"
   }
 }

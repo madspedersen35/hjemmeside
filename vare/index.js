@@ -2,21 +2,30 @@ let form = document.getElementById('submitForm');
 
 form.addEventListener('submit', async (e)=>{
     e.preventDefault();
+
     const formData=  new FormData(form);
 
     await fetch('http://localhost:5555/vare', {
+
         method: "POST",
+
         body: formData
     });
 });
 
 let refresh =document.getElementById('refresh');
+
 refresh.addEventListener('click',async () => {
+
     VareListe.innerHTML =`
     <tr>
+
         <th> Titel</th>
+
         <th> Pris</th>
+
         <th> kategori</th>
+        
         <th> Billede</th>
 
     </tr>
